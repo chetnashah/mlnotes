@@ -2,8 +2,52 @@
 \usepackage[latin1]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
+\usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{graphicx}
 \begin{document}
+	\theoremstyle{definition}
+	\newtheorem{defn}{Definition}[section]
+	
 	\section{Calculus}
+	\begin{defn}
+		\textbf{Continuity at a point} $x = a$:\\
+			\fbox{
+					A function $f$ is continuous at $x = a$ if 
+		$\lim\limits_{x \to a} f(x) = f(a)$	
+		}
+
+	\end{defn}
+	There are three subtle points that should not be missed:
+	\begin{itemize}
+		\item Two sided limit $\lim\limits_{x \to a} f(x)$ exists and is finite
+		\item The function is defined at $x = a$, i.e. $f(a)$ exists
+		\item The above two quantities are equal i.e 
+		$\lim\limits_{x \to a} f(x) = f(a)$	
+	\end{itemize}.
+
+	Some of the cases the continuity fails is, e.g. two sided limit exists but $f(a)$ has a different value, or two sided limit exists and $f(a)$ is not defined.\\ \\ In essence, for $f$ to be continuous at a point $x = a$, two sided limit should exist and be same as $f(a)$ at $x = a$.
+	
+	\begin{defn}
+		\textbf{Continuity on an interval}\\
+		$f$ is continuous on the interval $(a,b)$ if it is continuous
+		at every point in the interval.
+		
+		
+	\end{defn}
+
+	\begin{defn}
+	\textbf{Continuity and Intermediate Value Theorem(IVT)}\\
+	If $f$ is continuous on $[a,b]$, and $f(a) < 0$ and $f(b) > 0$,\\ then there is at least one number $c$ in the interval $(a,b)$ such that
+	$f(c) = 0$.\\ \\ The same is true if instead $f(a) > 0$ and $f(b) < 0$.	
+	
+\end{defn}
+
+	\begin{defn}
+	\textbf{Continuity and Max-Min Theorem}\\
+	If $f$ is continuous on $[a,b]$,\\
+	then f has atleast one maximum and one minimum on $[a,b]$.	
+	
+\end{defn}
+	
 \end{document}

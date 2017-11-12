@@ -17,23 +17,23 @@
 
 	\section{Basic definitions}
 
-	\begin{defn}{Support}
+	\begin{defn}{\textbf{Support}}
 		The set of values a random variable can take (set of all the numerical realizations of outcomes) e.g. for a binary random variable X, it's support is $R_X = \{ 0, 1 \}$
 	\end{defn}
 
 
-	\begin{defn}{Sample Point}
+	\begin{defn}{\textbf{Sample Point}}
 		In an experiment, a sample point is one of the possible outcomes of experiment denoted by $\omega$
 	\end{defn}
 
-	\begin{defn}{Independent Events}
+	\begin{defn}{\textbf{Independent Events}}
 	Two events A and B are independent if and only if \\
 	\begin{align}
 		P(A \cap B) = P(A) * P(B)
 	\end{align}
 	\end{defn}
 
-	\begin{defn}{Jointly/Mutually Independent Events}
+	\begin{defn}{\textbf{Jointly/Mutually Independent Events}}
 	Let $E_1, ... , E_n$ be n events. \\
 	$E_1, ... , E_n$ are jointly independent(or mutually independent)
 	if and only if for any sub-collection of k events $(k \leq n) E_{i1}, ... , E_{ik}$:
@@ -42,53 +42,72 @@
 	\end{align}
 	\end{defn}
 
-	\begin{defn}{Random Variable}
+	\begin{defn}{\textbf{Random Variable}}
 		A random Variable $X$ is a function from sample space $\Omega$ to set of real numbers $\R$, i.e $ X: \Omega -> \R $.\\
 		
 		The real number $X(\omega)$ associated with sample point $\omega \in \Omega$ is called a realization of the random variable. The set of all possible realizations is called the support and denoted by $R_X$
 	\end{defn}
 
-	\begin{defn}{Probability Mass Function}
+	\begin{defn}{\textbf{Probability Mass Function}}
 		The PMF of a discrete random variable $X$ is a function $p_X : \R -> [0,1]$ such that\\
-		$p_X = P(X = x)\quad \forall x \in \R$\\
+		\begin{align}
+			p_X = P(X = x)\quad \forall x \in \R
+		\end{align}
 		where $P(X = x)$ is the probability of realization of random variable X will be equal to x. Basically PMF is numerical realizations $->$ respective Probabilities.
 	\end{defn}
 
-	\begin{defn}{Distribution Function/Cumulative Distribution Function}
+	\begin{defn}{\textbf{Distribution Function/Cumulative Distribution Function}}
 		If $X$ is a random variable, its distribution/cdf is a function $F_X : \R -> [0,1]$ such that \\
 		\begin{align}
 			F_X(x) = P(X \le x) \quad \forall x \in \R
 		\end{align}
 	\end{defn}
 
-	\begin{defn}{Expected Value of a Random Variable}
+	\begin{defn}{\textbf{Expected Value of a Random Variable}}
 	The expected value of random variable $X$ is the weighted average of the values that X can take on where each possible value is weighted by its respective probabilit i.e. \\
 	\begin{align}
-		E[X] = \sum\limits_{x \in R_X}xp_X(x)
+		\mathbf{E}[X] = \sum\limits_{x \in R_X}xp_X(x)
 	\end{align}
 	\end{defn}
 
-	\begin{defn}{Deviation of a Random Variable}
-	The expected value of random variable $X$ is the weighted average of the values that X can take on where each possible value is weighted by its respective probabilit i.e. \\
-	$E[X] = \sum\limits_{x \in R_X}xp_X(x)$
+	\begin{defn}{\textbf{Deviation of a Random Variable}}
+	The Deviation of a Random Variable is its difference from its mean value/Expected value. It is denoted by 
+	\begin{align}
+		\overline{X} = X - \mathbf{E}[X]
+	\end{align}
+	Deviation of Random Variable is also a random variable in it's
+	own respect.
 	\end{defn}
 
-	\begin{defn}{Variance}
-		It is a measure of dispersion of a random variable.
+	\begin{defn}{\textbf{Variance}}
+		It is a measure of dispersion of a random variable. Let $X$ be a random variable. The variance of X, denoted by $Var[X]$ is defined as follows:\\
+		\begin{align}
+			Var[X] = \mathbf{E}[(X - \mathbf{E}[X])^2] = \mathbf{E}[\overline{X}^2]
+		\end{align}
+		You can also think of it as mean of the square of the deviations of original random variable.
 	\end{defn}
 
-	\begin{defn}{Covariance}
+	\begin{defn}{\textbf{Standard Deviation}}
+	It is a measure of dispersion of a random variable. Let $X$ be a random variable. The standard deviation of X, denoted by $stdev[X]$ or $std[X]$ is defined as follows:\\
+	\begin{align}
+	stdev[X] = \sqrt{Var[X]}
+	\end{align}
+	You can also think of it as rms deviation.
+	\end{defn}
+
+
+	\begin{defn}{\textbf{Covariance}}
 	It is a measure of association between two random variables.
 	Covariance of two random variables X and Y is , provided Expected values are well defined,
 	\begin{equation}
-		Cov[X,Y] = E[ (X - E[X]) * (Y - E[Y]) ] = E[\overline{X} * \overline{Y}]
+		Cov[X,Y] = \mathbf{E}[ (X - \mathbf{E}[X]) * (Y - \mathbf{E}[Y]) ] = \mathbf{E}[\overline{X} * \overline{Y}]
 	\end{equation}
-	where we say deviation of X is $\overline{X} = X - E[X]$ and \\
-	deviation of Y is $\overline{Y} = Y - E[Y]$\\
+	where we say deviation of X is $\overline{X} = X - \mathbf{E}[X]$ and \\
+	deviation of Y is $\overline{Y} = Y - \mathbf{E}[Y]$\\
 	or in other words, covariance is expectation of product of deviations.
 	\end{defn}
 
-	\begin{defn}{Random Vector}
+	\begin{defn}{\textbf{Random Vector}}
 	It is a multidimensional generalisation of the concept of Random Variable. Associated probability functions have the word "joint" in front of them e.g. Joint PMF, Joint cdf etc correspond to a Random Vector.
 	\end{defn}
 
