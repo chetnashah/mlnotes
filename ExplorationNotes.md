@@ -5,6 +5,10 @@
     - Pandas has two basic structures : Series which is like a numpy array and Dataframe which is like a two d table or like an excel sheet.
     - Useful methods on pd.Series : s.describe(), s.value_counts(), s.hist(bins, etc)
 
+* Use of random state in sklearn code:
+It doesn't matter if the random_state is 0 or 1 or any other integer. What matters is that it should be set the same value, if you want to validate your processing over multiple runs of the code.
+
+
 * Always use a scatter-matrix to get data insight. via 
 ```
 // Extremly useful to find out correlation between any two variables
@@ -13,20 +17,72 @@ pd.scatter(dataframe,options)
 It plots scatter plot for each combination of two variables, allowing you to see if there is correlation between any two pair of variables. In the diagonal it shows histogram for the particular variable.
 If you see a lot of skewing, try again with log transformation.
 
+* When there are no outliers in a sample, the mean and standard deviation are used to summarize a typical value and the variability in the sample, respectively.  When there are outliers in a sample, the median and interquartile range are used to summarize a typical value and the variability in the sample, respectively
+
 * If data is not normally distributed(where usually mean and median nearby), especially if the mean and median vary significantly (indicating a large skew), it is most often appropriate to apply a non-linear scaling (like logarithm) — particularly for financial data.
+
 
 * One of the known techniques to test feature relevance, is to remove that feature
 and try to predict that feature from the rest of features, if it is high, it is possible that the removed feature is some sort of combination of remaining features meaning it is not relevant, where as if the score is low to predict removed feature means it is more relevant.
 
 * visualizing with heatmaps = http://seaborn.pydata.org/generated/seaborn.heatmap.html
 
+
 * Finding outliers in the dataset - http://datapigtechnologies.com/blog/index.php/highlighting-outliers-in-your-data-with-the-tukey-method/
+
+* K Means is sensitive to outliers : The reason is simply that k-means tries to optimize the sum of squares. And thus a large deviation (such as of an outlier) gets a lot of weight, and pulls the centroids towards itself.
+
+* General advice: Outlier removal should be done after deliberate and thorough checking. Rationale : 
+- An outlier is an observation that appears to deviate markedly from other observations in the sample An outlier may indicate bad data. For example, the data may have been coded incorrectly or an experiment may not have been run correctly. 
+- If it can be determined that an outlying point is in fact erroneous, then the outlying value should be deleted from the analysis (or corrected if possible).
+- In some cases, it may not be possible to determine if an outlying point is bad data. Outliers may be due to random variation or may indicate something scientifically interesting. In any event, we should not  simply delete the outlying observation before a through investigation. In  running experimdnts , we may repeat the experiment. If the data contains significant outliers, we may need to consider the use of robust statistical techniques.
+
+- You should proceed with caution when considering to remove observations from the data. In many cases, there is a valid reason for these observations to be outliers and that is what the researcher should be studying. Why was this an outlier?
+- Another issue with outliers is where to draw the line. It may not be clear where the outlier behavior starts. There are some people who arbitrarily eliminate a percentage at the tails (e.g. 5%), which makes no sense whatsoever.
+- Finally, you should not take out the outliers and then transform the data. The data may appear non-normally distributed because of those data points. So eliminating them may in fact cause the data to appear normally distributed. So by transforming the data, you didn't improve the fit.
+
+* Another way of getting around outliers:
+- If the number of outliers is small and you are concerned that they will destabilize your solution, you could attempt a random forest classifier. The RF fits trees to random selections of data and variables, and collects "votes" from each, thus reducing the impact of outlier valuers.
+
+- On the other hand, if the number of outliers is fairly substantital, you might want to create a new class called "outlier". In the training set, apply this label to those values you have deemed to be outliers and then fit the model with the augmented class. Check if the model correctly identifies outliers in the test set.
+
+* IQR (InterQuartile range) is Q3 - Q1.
+
+* Turkey fences are (Q1 - 1.5 * IQR, Q3 + 1.5 * IQR)
+
 
 * pca.fit only learns variances, does not change original data
 
 * pca.transform does actual compression/dimensionality reduction/compression.
 
+* Many of the times dimensionality reduction/pca is done before doing clustering. Find out more about this why? If a significant amount of variance is explained by 2 or 3 features in explained_variance_Ratio of pca fitting, we should go ahead with pca compression/dimensionality reduction, to be able to visualize clustering easily later on.
+
 * EM algorithm : https://www.youtube.com/watch?v=REypj2sy_5U&list=PLBv09BD7ez_4e9LtmK626Evn1ion6ynrt
+
+#### Common scores and measures (Evaluation metrics)
+
+In prediction, both False positives(FP) and false negatives(FN) are bad, but under different conditions, you
+would want to minimize different one, or both. Find out more at (https://en.wikipedia.org/wiki/Confusion_matrix)
+
+* Precision: Talks only about positives,
+```
+Precision = TP/(TP + FP)
+```
+
+* Recall:
+```
+Recall = TP/(TP + FN)
+```
+
+* Accuracy:
+```
+Accuracy = (TP + TN)/(FP + FN + TP + TN)
+```
+
+* F-1 score :
+```
+F1 score = 2 * precision * recall / (precision + recall)
+```
 
 ### Clustering
 
@@ -75,3 +131,8 @@ This is usally well known e.g. we decide parameters theta = some mu, sigma -> we
 the posterior distribution p(theta | Dn). p(theta|Dn) is the real job of machine learning.
 
 
+#### Statistics Notes
+
+* Simplest form of non-parametric density estimation is Histogram. Although it has two parameters, bin size and starting bin position.
+
+* kde is improved (histogram) - method of estimating pdf of underlying dataset.
