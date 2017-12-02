@@ -8,6 +8,7 @@
 * Use of random state in sklearn code:
 It doesn't matter if the random_state is 0 or 1 or any other integer. What matters is that it should be set the same value, if you want to validate your processing over multiple runs of the code.
 
+* Use seaborn boxplots, and learn how boxplots look for normal distributions and skewed distributions.
 
 * Always use a scatter-matrix to get data insight. via 
 ```
@@ -50,6 +51,13 @@ and try to predict that feature from the rest of features, if it is high, it is 
 
 * Turkey fences are (Q1 - 1.5 * IQR, Q3 + 1.5 * IQR)
 
+* Why are turkey fences preferred ? There are different methods to detect the outliers, including standard deviation approach and Tukey’s method which use interquartile (IQR) range approach. Tukey’s method is not dependent on distribution of data. Moreover, the Tukey’s method ignores the mean and standard deviation, which are influenced by the extreme values (outliers).
+
+* **Mahalanobis distance** : Measure of distance between point P and distribution D. It is a multidimensional generalization of idea of measuring how many SDs away P is from mean of D. 
+    - The distance is zero if P is at mean of D.
+    - Along each principal component axis, it measures number of standard deviations from P to the mean of D.
+    - Mahalanobis distance is unitless and scale-invariant(normalized euclidean distance) = (x - mu)/sigma.
+    - Mahalanobis distance is preserved under full-rank linear transformations of the space spanned by the data. This means that if the data has a nontrivial nullspace, Mahalanobis distance can be computed after projecting the data (non-degenerately) down onto any space of the appropriate dimension for the data.
 
 * pca.fit only learns variances, does not change original data
 
