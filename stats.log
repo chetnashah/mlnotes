@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.15)  19 NOV 2017 22:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.15)  3 DEC 2017 19:42
 entering extended mode
 **./stats.tex
 (stats.tex
@@ -252,32 +252,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 66--68
 [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 82--84
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 91--93
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 125.
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--102
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 134.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 125.
-
-Underfull \hbox (badness 10000) in paragraph at lines 133--135
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 134.
+ [2]
+Underfull \hbox (badness 10000) in paragraph at lines 142--144
 
  []
 
-[2] <images/sigmoidplot.png, id=20, 376.40625pt x 252.945pt>
+<images/sigmoidplot.png, id=19, 376.40625pt x 252.945pt>
 File: images/sigmoidplot.png Graphic file (type png)
 
 <use images/sigmoidplot.png>
-Package pdftex.def Info: images/sigmoidplot.png used on input line 140.
+Package pdftex.def Info: images/sigmoidplot.png used on input line 149.
 (pdftex.def)             Requested size: 244.66115pt x 164.4123pt.
  [3 <./images/sigmoidplot.png>] (stats.aux) ) 
 Here is how much of TeX's memory you used:
@@ -300,7 +300,7 @@ les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files/MiKTeX
 /type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
 ublic/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
 fonts/symbols/msbm10.pfb>
-Output written on stats.pdf (3 pages, 143030 bytes).
+Output written on stats.pdf (3 pages, 144880 bytes).
 PDF statistics:
  63 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
