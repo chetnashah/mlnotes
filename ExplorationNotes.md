@@ -1,5 +1,39 @@
 
+### Statistical Exploration 
+
+* Try to articulate what it is you are measuring and how it is that 
+you are measuring.
+
+For a given expirement it is recommended to have
+1. a good sample size.
+2. A representative sample.
+3. A sound methodology.
+
+External factors(lurking variables) should be kept constant
+accross all test subjects as possible so that they might not influence
+result.
+
+Average of population is denoted by mu, and average of sample statistic is denoted by \bar{x}
+
+* To show correlation, observations are enough.
+* To show causation, you have to do a controlled experiment.
+
+* Surveys have response bias and non-response bias (look this up)
+
+Randomized assignment, double blind experiments should be used to prove causality. 
+
+Histograms tend to have bins(interval of domain values) with frequencies, instead of 
+each possible value in domain with it's individual frequencies (largely sparse).
+Smaller the bin size, more detail you have about the data distribution.
+Larger bin size sacrifice detail for convinience.
+
+
 ### Exploration with Python
+
+* parameters is what model predicts, hyper-parameters is what the programmer has to provide from outside, e.g. no of branching etc in 
+decision trees, C value in SVM etc. For searching through the space
+of possible hyper parameters GridSearch or RandomizedSearch is used
+from sklearn.
 
 * Using pandas/numpy/scikitlearn
     - Pandas has two basic structures : Series which is like a numpy array and Dataframe which is like a two d table or like an excel sheet.
@@ -144,3 +178,12 @@ the posterior distribution p(theta | Dn). p(theta|Dn) is the real job of machine
 * Simplest form of non-parametric density estimation is Histogram. Although it has two parameters, bin size and starting bin position.
 
 * kde is improved (histogram) - method of estimating pdf of underlying dataset.
+
+#### Markovian Property
+
+The Markov property is used to refer to situations where the probabilities of different outcomes are not dependent on past states: the current state is all you need to know, sometimes called "memorylessness".
+
+
+#### Markov Decision Process
+
+Consists of SMAR - States, Model/Trasition table, Actions, Rewards(real valued).
