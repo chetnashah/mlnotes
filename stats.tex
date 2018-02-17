@@ -68,6 +68,57 @@
 	\begin{align}
 		\mathbf{E}[X] = \sum\limits_{x \in R_X}xp_X(x)
 	\end{align}
+	
+	In other words, it is the weighted average of all possible numerical outcomes(in the support) widghted with respect to their respective probabilities
+	\end{defn}
+
+	\begin{defn}{\textbf{Expected value of function of Random Variable}}
+		Expected value of function $g(Y)$ say
+		$g(Y) = Y^2$:
+		\begin{align}
+			E[g(Y)] = \sum_{y \in R_Y}g(y)p(y)
+		\end{align}
+	\end{defn}
+
+	\begin{defn}{\textbf{Linearity of Expectation}}
+		If $X$ is a random variable and $a \in R$ is a constant, then
+		\begin{align}
+			E[aX] = aE[X]
+		\end{align}
+		In a more general setting:\\
+		If $Y$ is a random variable such that $Y = a + bX$, where 
+		$X$ is a random variable, and $a$ and $b$ are constants,
+		\begin{align}
+			\begin{split}
+				E[Y] & = E[a] + E[bX] \\
+				     & = a + bE[X] \\
+				E[Y] & = a + bE[X] \\
+			\end{split}
+		\end{align}
+		
+	\end{defn}
+
+	\begin{defn}{\textbf{Conditional expectation of Random Variable}}
+		Given random variables $X$ and $Y$, The conditional expectation of $X$ given $Y = y$ is the weighted average of values that X can take on, where each possible value is weighted by its respective conditional probability (conditinal on the information Y = y), denoted by $E[X|Y = y]$
+		\begin{align}
+			E[X|Y = y] = \sum_{x \in R_x} xp_{X|Y = y}(x)
+		\end{align}
+		
+		Another fact worth noting is that $E[X|Y=y]$ when y is known is a number, but when y is unknown, $E[X|Y]$ acts like a random variable that is a function of random variable Y.i.e. $E[X|Y] = g(Y)$
+	\end{defn}
+
+	\begin{defn}{\textbf{Total Expectation/Iterated Expectation}}
+		The law of total expectation/law of iterated expectation/tower rule/smoothing theorem/adam's law among other names states that if,
+		$X$ is a random variable whose expected value $E[X]$ is defined, and $Y$ is any random variable on same probability space then
+		\begin{align}
+			E[X] = E[E[X|Y]]
+		\end{align}
+		This comes from the fact that if there are $A_i$ is a finite countable partition of the sample space,
+		then
+		\begin{align}
+			E[X] = \sum_{i}E[X|A_i]P[A_i]
+		\end{align}
+		In other words, the first equation is also summarized as, the expected value of a conditional expectation (an r.v.) is its unconditional expected value.
 	\end{defn}
 
 	\begin{defn}{\textbf{Quantile}}

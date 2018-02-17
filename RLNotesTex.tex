@@ -1,0 +1,46 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\title{Reinforcement Learning Notes}
+
+\begin{document}
+
+\maketitle
+	
+\section{Markov decision process}
+
+\section{return G}
+
+The return $G_t$ is total discounted reward for time-step t. return is defined for a given sample
+
+\begin{equation}
+	G_t = R_{t+1} + \gamma R_{t+2} + \dots = \sum_{k=0}^{\infty} \gamma ^k R_{t+k+1}
+\end{equation}
+
+The discount $\gamma \in [0,1]$
+
+\section{Bellman equation for MRPs}
+
+The main idea is :\\
+
+The value function can be decomposed into two parts:
+\begin{itemize}
+	\item immediate reward $R_{t+1}$
+	\item discounted value of successor state $\gamma v(S_{t+1})$
+\end{itemize}
+	
+\begin{equation}
+\begin{split}
+	v(s) & = E[G_t | S_t = s] \\
+& = E[R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \dots | S_t = s] \\
+& = E[R_{t+1} + \gamma (R_{t+2} + \gamma R_{t+3} + \dots)) | S_t = s] \\
+& = E[R_{t+1} + \gamma G_{t+1} | S_t = s] \\
+& = E[R_{t+1} + \gamma v(S_{t+1})| S_t = s] \\
+\end{split}
+\end{equation}
+	
+\end{document}
