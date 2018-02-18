@@ -11,7 +11,9 @@
 
 \maketitle
 	
-\section{Markov decision process}
+\section{Markov Reward process}
+
+A MRP(Markove reward process) does not have actions involved, that concept is MDP(markov decision process)
 
 \section{return G}
 
@@ -42,5 +44,65 @@ The value function can be decomposed into two parts:
 & = E[R_{t+1} + \gamma v(S_{t+1})| S_t = s] \\
 \end{split}
 \end{equation}
-	
+
+\section{Formal definition of MDP}
+
+A Markov decision process is a markov reward process with decisions. It is an environment in which all states are markov.
+
+A Markov decision Process is a tuple $(S, A, P, R, \gamma)$
+\begin{itemize}
+	\item S is a finite set of states
+	\item A is a finite set of actions
+	\item P is a state transition probability matrix, \\
+	$P^a_{ss'} = P[S_{t+1} = s' | S_t = s, A_t = a]$
+	\item R is a reward function, \\
+	$R_s^a = E[R_{t+1} | S_t = s, A_t = a]$
+	\item $\gamma$ is a discount factor
+\end{itemize}
+
+\section{Policy and Stochastic policy}
+
+A policy defines behavior/decisions/actions of the agent to look for what actions to take.
+A policy tells what action to take given a state S i.e.
+$\pi : s \mapsto a$
+
+A stochastic policy $\pi$, is a
+distribution over actions given state,
+\begin{align}
+	\pi(a|s) = P[A_t = a | S_t = s]
+\end{align}
+
+\section{Value function}
+The \textbf{state-value function} $v_{\pi}(s)$ of an MDP is the expected return starting from state s, and then following policy $\pi$
+\begin{align}
+	v_{\pi}(s) = E_{\pi}[G_t | S_t = s]
+\end{align}
+The expectation above makes sense for a stochastic policy, whereas for a fixed policy value function is just return defined by policy. \\
+
+The \textbf{action-value function}
+$q_{\pi}(s,a)$ is the expected return
+starting from state s, taking action a, and then following policy $\pi$
+
+\begin{align}
+	q(s,a) = E_{\pi}[G_t | S_t = s, A_t = a]
+\end{align}
+\\
+Relating state-value $v_{\pi}(s)$ and action-value $q_{\pi}(s,a)$ (a single step look ahead):
+\begin{align}
+	v_{\pi}(s) = \sum_{a \in A} \pi(a|s) q_{\pi}(s,a)
+\end{align}
+
+Relating action-value $q_{\pi}(s,a)$ and state-value $v_{pi}(s)$ (a single step look ahead):
+\begin{align}
+	q_{\pi}(s,a) = R_s^a + \sum_{s' \in S}\gamma P_{ss'}^a v_{\pi}(s')
+\end{align}
+
+Using the above two steps look ahead (first over all actions then over all subsequent states) we can specify state-values in terms of itself:
+\begin{equation}
+	v_{\pi}(s) = \sum_{a \in A} \pi(a|s) \bigg(R_s^a + \sum_{s \in S} \gamma P_{ss'}^a v_{pi}(s')\bigg) 
+\end{equation}
+
+Similarly using two steps look ahead (first over all states then over all subsequent actions), we can specify action-values recursively in tersm of itself
+TODO
+
 \end{document}

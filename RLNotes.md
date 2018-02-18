@@ -21,11 +21,15 @@ Biological systems like dopamine in human brain have similar behavior.
 
 * Time really matters (sequential, non i.i.d data)
 
-* Agent's actions affect subsequent data is receives.
+* Agent's actions affect subsequent data is receives, and thus also subsequent rewards.
+
+* The two main charechteristics or RL - 
+    1. trial and error search
+    2. delayed rewards 
 
 ### Reward hypothesis
 
-All goals can be described by maximisation of expected cumulative reward. Agent's job is to reach goal or in other words maximise cumulative reward.
+All goals can be described by maximisation of expected cumulative numerical reward. Agent's job is to reach goal or in other words maximise cumulative numerical reward.
 
 Goals are usually modeled in terms of rewards?
 
@@ -65,8 +69,12 @@ Simplest policy :
 
 #### Value function
 
-Tells us how good each state and/or action is, i.e a goodness is total expected future reward.
+Tells us how good each state and/or action is, i.e a goodness is total expected future reward. Note: A reward signal indicates how good it is in immediate sense, but value function specifies goodness in the long run.
 Value function given the state & the policy we are going to follow, tells us the total expected future reward.
+
+It is hard to determine value compared to reward, rewards are basically given to us by environment, where as values are estimated and re-estimated by sequences of observations an agent makes over its entire lifetime.
+
+
 
 #### Model
 
@@ -77,6 +85,15 @@ Agent's representation of the environment
 Exploration: finding out more information about environment via experimentation (some randomness/trial and error) without losing too much reward along the way.
 
 Exploitation: exploits known information to maximize reward.
+
+### epsilon-greedy methods
+
+Greedy action selection always exploits current knowledge to maximize immediate
+reward; it spends no time at all sampling apparently inferior actions to see if they might really be better.
+A simple alternative is to behave greedily most of the time, but every once in a while, say with small
+probability ε, instead select randomly from among all the actions with equal probability, independently
+of the action-value estimates. We call methods using this near-greedy action selection rule ε-greedy
+methods
 
 ### What is return Gt for a given MDP sample?
 
@@ -106,6 +123,14 @@ It is long term value of being in a state. i.e the expected return starting from
 **Policy** - Given a state, tells us what action to take. ( state -> action )
 
 **Utility** - Sum of discounted rewards
+
+
+### Policy search
+
+ If the space of policies is suﬃciently small, or can be structured so that good policies are common or easy to ﬁnd—or if a lot of time is available for the search—then evolutionary methods(simmulated annealing, genetic algorithms) can be eﬀective. In addition, evolutionary methods have advantages on problems in which the learning agent cannot sense the complete state of its environment. 
+
+ is example illustrates the diﬀerences between evolutionary methods and methods that learn value functions. To evaluate a policy an evolutionary method holds the policy ﬁxed and plays many games against the opponent, or simulates many games using a model of the opponent. The frequency of wins gives an unbiased estimate of the probability of winning with that policy, and can be used to direct the next policy selection. But each policy change is made only after many games, and only the ﬁnal outcome of each game is used: what happens during the games is ignored. For example, if the player wins, then all of its behavior in the game is given credit, independently of how speciﬁc moves might have been critical to the win. Credit is even given to moves that never occurred! Value function methods, in contrast, allow individual states to be evaluated. In the end, evolutionary and value function methods both search the space of policies, but learning a value function takes advantage of information available during the course of play. 
+
 ### How we navigate state space?
 
 s1, a1, r1,
@@ -124,3 +149,4 @@ Use games.
 In a 2-player, zero-sum deterministic game
 of perfect information,
 Minimax = Maximin, there always exists an optimal pure strategy for each player.
+
