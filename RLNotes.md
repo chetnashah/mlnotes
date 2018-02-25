@@ -31,7 +31,13 @@ Biological systems like dopamine in human brain have similar behavior.
 
 All goals can be described by maximisation of expected cumulative numerical reward. Agent's job is to reach goal or in other words maximise cumulative numerical reward.
 
-Goals are usually modeled in terms of rewards?
+#### When exactly do we get rewards?
+
+It essentially boils down to a modelling choice: for some problems, the reward function might be easier to define on the (state,action) pairs, while for others, the tuple (state,action,state) might be more appropriate. There's even a third option that only defines the reward on the current state (this can also be found in some references).
+
+I do think the definition of the reward function R(s,a) on the (state, action) pair is the most common, however. But the core learning algorithms remain the same whatever your exact design choice for the reward function.
+
+Also usually there are two steps in decision making, first agent takes an action, and then the environment probabilistically takes it to some state.
 
 ### Observations vs States
 

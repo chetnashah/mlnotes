@@ -53,9 +53,9 @@ A Markov decision Process is a tuple $(S, A, P, R, \gamma)$
 \begin{itemize}
 	\item S is a finite set of states
 	\item A is a finite set of actions
-	\item P is a state transition probability matrix, \\
+	\item P is a state transition probability matrix (how environment behaves/ wind might blow us/puts us on taking an action), \\
 	$P^a_{ss'} = P[S_{t+1} = s' | S_t = s, A_t = a]$
-	\item R is a reward function, \\
+	\item R is a reward function (for taking an action a in state s), \\
 	$R_s^a = E[R_{t+1} | S_t = s, A_t = a]$
 	\item $\gamma$ is a discount factor
 \end{itemize}
@@ -92,17 +92,22 @@ Relating state-value $v_{\pi}(s)$ and action-value $q_{\pi}(s,a)$ (a single step
 	v_{\pi}(s) = \sum_{a \in A} \pi(a|s) q_{\pi}(s,a)
 \end{align}
 
-Relating action-value $q_{\pi}(s,a)$ and state-value $v_{pi}(s)$ (a single step look ahead):
+Relating action-value $q_{\pi}(s,a)$ and state-value $v_{\pi}(s)$ (a single step look ahead):
 \begin{align}
 	q_{\pi}(s,a) = R_s^a + \sum_{s' \in S}\gamma P_{ss'}^a v_{\pi}(s')
 \end{align}
 
+\textbf{Bellman Expectation Equations} \\
 Using the above two steps look ahead (first over all actions then over all subsequent states) we can specify state-values in terms of itself:
 \begin{equation}
-	v_{\pi}(s) = \sum_{a \in A} \pi(a|s) \bigg(R_s^a + \sum_{s \in S} \gamma P_{ss'}^a v_{pi}(s')\bigg) 
+	v_{\pi}(s) = \sum_{a \in A} \pi(a|s) \bigg(R_s^a + \sum_{s \in S} \gamma P_{ss'}^a v_{\pi}(s')\bigg) 
 \end{equation}
 
-Similarly using two steps look ahead (first over all states then over all subsequent actions), we can specify action-values recursively in tersm of itself
-TODO
+Similarly using two steps look ahead (first over all states then over all subsequent actions), we can specify action-values recursively in tersm of itself, q value relates to the q value of the next step
+
+\begin{equation}
+	q_{\pi}(s,a) = R^a_s + \sum_{s' \in S} \gamma P^a_{ss'} \bigg( \sum_{a' \in A} \pi(a'|s') q_{\pi}(s',a') \bigg)
+\end{equation}
+
 
 \end{document}

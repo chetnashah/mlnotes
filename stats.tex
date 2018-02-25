@@ -76,23 +76,23 @@
 		Expected value of function $g(Y)$ say
 		$g(Y) = Y^2$:
 		\begin{align}
-			E[g(Y)] = \sum_{y \in R_Y}g(y)p(y)
+			\mathbf{E}[g(Y)] = \sum_{y \in R_Y}g(y)p(y)
 		\end{align}
 	\end{defn}
 
 	\begin{defn}{\textbf{Linearity of Expectation}}
 		If $X$ is a random variable and $a \in R$ is a constant, then
 		\begin{align}
-			E[aX] = aE[X]
+			\mathbf{E}[aX] = a\mathbf{E}[X]
 		\end{align}
 		In a more general setting:\\
 		If $Y$ is a random variable such that $Y = a + bX$, where 
 		$X$ is a random variable, and $a$ and $b$ are constants,
 		\begin{align}
 			\begin{split}
-				E[Y] & = E[a] + E[bX] \\
-				     & = a + bE[X] \\
-				E[Y] & = a + bE[X] \\
+				\mathbf{E}[Y] & = \mathbf{E}[a] + \mathbf{E}[bX] \\
+				     & = a + b\mathbf{E}[X] \\
+				\mathbf{E}[Y] & = a + b\mathbf{E}[X] \\
 			\end{split}
 		\end{align}
 		
@@ -101,24 +101,37 @@
 	\begin{defn}{\textbf{Conditional expectation of Random Variable}}
 		Given random variables $X$ and $Y$, The conditional expectation of $X$ given $Y = y$ is the weighted average of values that X can take on, where each possible value is weighted by its respective conditional probability (conditinal on the information Y = y), denoted by $E[X|Y = y]$
 		\begin{align}
-			E[X|Y = y] = \sum_{x \in R_x} xp_{X|Y = y}(x)
+			\mathbf{E}[X|Y = y] = \sum_{x \in R_x} xp_{X|Y = y}(x)
 		\end{align}
 		
-		Another fact worth noting is that $E[X|Y=y]$ when y is known is a number, but when y is unknown, $E[X|Y]$ acts like a random variable that is a function of random variable Y.i.e. $E[X|Y] = g(Y)$
+		Another fact worth noting is that $\mathbf{E}[X|Y=y]$ when y is known is a number, but when y is unknown, $\mathbf{E}[X|Y]$ acts like a random variable that is a function of random variable Y.i.e. $\mathbf{E}[X|Y] = g(Y)$
 	\end{defn}
 
 	\begin{defn}{\textbf{Total Expectation/Iterated Expectation}}
 		The law of total expectation/law of iterated expectation/tower rule/smoothing theorem/adam's law among other names states that if,
 		$X$ is a random variable whose expected value $E[X]$ is defined, and $Y$ is any random variable on same probability space then
 		\begin{align}
-			E[X] = E[E[X|Y]]
+			\mathbf{E}[X] = \mathbf{E}[\mathbf{E}[X|Y]]
 		\end{align}
 		This comes from the fact that if there are $A_i$ is a finite countable partition of the sample space,
 		then
 		\begin{align}
-			E[X] = \sum_{i}E[X|A_i]P[A_i]
+			\mathbf{E}[X] = \sum_{i}\mathbf{E}[X|A_i]P[A_i]
 		\end{align}
 		In other words, the first equation is also summarized as, the expected value of a conditional expectation (an r.v.) is its unconditional expected value.
+	\end{defn}
+
+	\begin{defn}{\textbf{Geometric Random Variable}}
+		Given that phenomena has a sequence of independent trials, there are two possible outcomes for each trial and the probaility of success p is same for every trial, \\
+		The geometric random variable $X$ is the count of number of failures before the first success.
+		i.e. \\ 
+		$Pr(X = k)$ means the first success happened on the $k^{th}$ trial.
+		The support $R_X={1,2,3..}$.  Don't confuse this with the outcomes of a single trial. We should really think that experiment is an aggregate process.\\
+		The \textbf{pmf of X} is looks like exponentially decreasing probability that adds up in total to 1.
+		\begin{align}
+			P(X = k) = (1-p)^{k}p
+		\end{align}
+		
 	\end{defn}
 
 	\begin{defn}{\textbf{Quantile}}
@@ -140,12 +153,21 @@
 	\end{defn}
 
 	\begin{defn}{\textbf{Variance}}
-		It is a measure of dispersion of a random variable. Let $X$ be a random variable. The variance of X, denoted by $Var[X]$ is defined as follows:\\
+		It is a measure of dispersion of a random variable (expected squared deviation from expectation). Let $X$ be a random variable. The variance of X, denoted by $Var[X]$ is defined as follows:\\
 		\begin{align}
-			Var[X] = \mathbf{E}[(X - \mathbf{E}[X])^2] = \mathbf{E}[\overline{X}^2]
+			\mathbf{Var}[X] = \mathbf{E}[(X - \mathbf{E}[X])^2] = \mathbf{E}[\overline{X}^2]
 			 = \mathbf{E}[X^2] - \mathbf{E}[X]^2
 		\end{align}
 		You can also think of it as mean of the square of the deviations of original random variable.
+		
+		One would wonder why $\mathbf{E}[(X- \mathbf{E}[X])^2]$ is used instead of $\mathbf{E}[X - \mathbf{E}[X]]$,
+		The reason is $X - \mathbf{E}[X]$ is signed distance, here is a short proof 
+		\begin{align}
+			\mathbf{E}[X - \mathbf{E}[X]] &= \mathbf{E}[X - k] \\
+			            &= \mathbf{E}[X] - \mathbf{E}[k] \\
+			            &= k - k \\
+			            &= 0
+		\end{align} 
 	\end{defn}
 
 	\begin{defn}{\textbf{Standard Deviation}}
