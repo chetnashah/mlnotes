@@ -27,6 +27,9 @@ each possible value in domain with it's individual frequencies (largely sparse).
 Smaller the bin size, more detail you have about the data distribution.
 Larger bin size sacrifice detail for convinience.
 
+* Key fact: a random sample tends to exhibit same properties as the population from which it is drawn.
+
+* As variance grows, we need larger samples to have same degree of confidence.
 
 ### Exploration with Python
 

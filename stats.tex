@@ -31,6 +31,7 @@
 	\begin{align}
 		P(A \cap B) = P(A) * P(B)
 	\end{align}
+	Knowing that B has occured, does not make us change our belief of the probabilities of A, and vice versa.
 	\end{defn}
 
 	\begin{defn}{\textbf{Jointly/Mutually Independent Events}}
@@ -42,10 +43,26 @@
 	\end{align}
 	\end{defn}
 
+	\begin{defn}{\textbf{Conditional Independence of Events}}
+		Let there be three events: $A, B, C$,
+		We say that $B$ and $C$ are independent, given the condition that event $A$ has occured.
+		Before knowing that $A$ has occured, they might not have been independent.
+	\end{defn}
+
 	\begin{defn}{\textbf{Random Variable}}
 		A random Variable $X$ is a function from sample space $\Omega$ to set of real numbers $\R$, i.e $ X: \Omega -> \R $.\\
 		
 		The real number $X(\omega)$ associated with sample point $\omega \in \Omega$ is called a realization of the random variable. The set of all possible realizations is called the support and denoted by $R_X$
+	\end{defn}
+
+	\begin{defn}{\textbf{Independence of Random Variables}}
+		Two random Variables $X$ and $Y$ are independent of each other, if the joint PMF of X and Y,
+		satisfies following condition:
+		\begin{align}
+			p_{X,Y} = p_X(x) \cdot p_Y(y) \quad is\ true\ for\  \forall x \in X, y \in Y
+		\end{align}
+		Understanding it in simple terms, for the 2-d table for PMF, any entry can be known by 
+		multiplying corresponding values in marginal probabilities $p_X(x)$ and $p_Y(y)$, if they are independent, and vice versa.
 	\end{defn}
 
 	\begin{defn}{\textbf{Probability Mass Function}}
@@ -188,6 +205,23 @@
 	where we say deviation of X is $\overline{X} = X - \mathbf{E}[X]$ and \\
 	deviation of Y is $\overline{Y} = Y - \mathbf{E}[Y]$\\
 	or in other words, covariance is expectation of product of deviations.
+	\end{defn}
+
+	\begin{defn}{\textbf{Joint PMFs}}
+		Joint probabilities tell how likely it is that certain $X$'s go together with certain $Y$'s. Notation is: \\
+		\begin{align}
+			p_{X,Y}(x,y) = P(X = x\ and\ Y = y)
+		\end{align}
+		It looks like following:
+		\includegraphics{jointpmf}
+		Useful in statistical studies that try to relate
+		random variables to each other.
+		Some properties are: \\
+		\begin{itemize}
+			\item $\sum_{x} \sum_{y} p_{X,Y}(x,y) = 1$
+			\item Finding PMF for single random variable is simple: $p_X(x) = \sum_{y} p_{X,Y}(x,y)$, these are also known as marginal PMFs.
+			\item Conditinal expectation means locking down a row/column as a new unverse, i.e. $p_{X|Y}(x|y) = P(X=x | Y=y) = p_{X,Y}(x,y)/p_Y(y)$
+		\end{itemize}
 	\end{defn}
 
 	\begin{defn}{\textbf{Random Vector}}
