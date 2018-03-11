@@ -31,6 +31,8 @@ Larger bin size sacrifice detail for convinience.
 
 * As variance grows, we need larger samples to have same degree of confidence.
 
+* Binomial distribution is really important for information theory.
+
 ### Exploration with Python
 
 * parameters is what model predicts, hyper-parameters is what the programmer has to provide from outside, e.g. no of branching etc in 
@@ -190,3 +192,27 @@ The Markov property is used to refer to situations where the probabilities of di
 #### Markov Decision Process
 
 Consists of SMAR - States, Model/Trasition table, Actions, Rewards(real valued).
+
+
+## Neural nets
+
+* Vectorization means getting rid of for loop and using more mathematical notation to get rid of index of the for-loop.
+
+* To vectorize for multiple examples (usually denoted by m), stack each example horizontally to each other.
+
+### Activation functions
+
+* sigmoid : Real numbers -> [0,1] (only use on output layer for binary classification)
+* tanh : Real numbers -> [-1, 1] (superior than sigmoid)
+
+Problem with above activation is plateauing of output for large values.
+And their derivative/slope is almost flat, thus not helping back-propogation/gradient descent to qucikly converge.
+
+* ReLU: Rectified linear unit (It is non-linear btw). `output = max(0, input)`
+
+* Why is some non-linearity needed in activation functions? Unless some non-linearity is present in activation function, all we are computing are linear functions of input, which cannot cover intersting hyperspaces that our target function actually is. Think of the X0R problem.
+
+* What to use at output layer? Binary classification - sigmoid,
+multilabel classification - softmax, value prediction - linear unit?
+
+### derivative of activation functions are important!

@@ -4,11 +4,48 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
+	\title{Linear Algebra}
 \begin{document}
-	\theoremstyle{definition}
-	\newtheorem{defn}{Definition}[section]
+
+	\maketitle
+
 	
-	\section{Linear Algebra}
+	\section{Basics}
+	The size of a matrix is given by (no. of rows x no of colums)
 	
+	Unless otherwise stated, a vector means a column vector. (k,1) and say it is in $R^k$.
+	
+	\subsection{product of matrix with vector}
+	
+	If the column vectors of a $(n,m)$ matrix A, are $\vec{v_1}, \vec{v_2}, \cdots, \vec{v_m}$, and $\vec{x}$ is a vector in $R^m$ with components $x_1, x_2, \cdots, x_m$, then the product is defined as (in terms of the columns of the matrix)
+	
+	\begin{align}
+		\begin{bmatrix}
+			\vec{v_1} & \vec{v_2} & \cdots & \vec{v_m}
+		\end{bmatrix}
+		\begin{bmatrix}
+			x_1\\
+			x_2\\
+			\vdots\\
+			x_m
+		\end{bmatrix}
+		= x_1\vec{v_1} + x_2\vec{v_2} + \cdots + x_m\vec{v_m}
+	\end{align}
+	
+	The same product of matrix A and vecotr x but in terms of row vectors $\vec{w_1}, \vec{w_2}, \cdots, \vec{w_n}$ is given in terms of rows of matrix A is:
+	
+	\begin{align}
+		\begin{bmatrix}
+			\vec{w_1}\\
+			\vdots\\
+			\vec{w_n}
+		\end{bmatrix}
+		\vec{x} = 
+		\begin{bmatrix}
+			\vec{w_1} \cdot \vec{x}\\
+			\vdots\\
+			\vec{w_n} \cdot \vec{x}
+		\end{bmatrix}	
+	\end{align}
 	
 \end{document}

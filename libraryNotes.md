@@ -14,6 +14,7 @@ The numpy shape `(4500, 4)` means 4500 rows/instances with 4 features for each i
 
 * numpy.random.rand takes in a shape and returns all random numbers in that shape (uniformly in 0-1)
 
+* Always have shapes with both `(x,y)` for vectors e.g. for row vector use `(1, 7)`. For column vector use `(5, 1)` for behaving consistently.
 
 #### Sklearn Interface design
 
@@ -52,6 +53,9 @@ x = tf.placeholder(tf.string)
 y = tf.placeholder(tf.int32)
 z = tf.placeholder(tf.float32)
 
+# place holders are usually used for
+# inputs and supplied via feed_dict
+
 with tf.Session() as sess:
     output = sess.run(x, feed_dict={
         x: 'Test string',
@@ -62,7 +66,69 @@ with tf.Session() as sess:
 // outputs 'Test string'
 ```
 
+### Tensorflow variables
+
+Tensors whose value have to be changed, for e.g. weights etc. must be made using `tf.Variable()`.
+A TensorFlow variable is the best way to represent shared, persistent state manipulated by your program.
+
+When you launch the graph, variables have to be explicitly initialized before you can run Ops that use their value.
+Initialization for tf.Variable:
+``` py
+b = tf.Variable(tf.zeros(1,5))
+init_op = tf.global_variables_initializer()
+with tf.Session() as sess:
+    sess.run(init_op)
+```
+
+Another example:
+``` py
+W1 = tf.ones((2,2))
+W2 = tf.Variable(tf.zeros((2,2)), name="weights")
+with tf.Session() as sess:
+    print(sess.run(W1)) #W1 does not need variables
+    sess.run(tf.global_variables_initializer())
+    print(sess.run(W2))
+```
+
+Initializing the weights with random numbers from a normal distribution is good practice
+
+Other way to make variables is to use `tf.get_variable("vname", vvalue)`
+e.g.
+``` py
+my_variable = tf.get_variable("my_variable", [1, 2, 3])
+```
+
+``` py
+v = tf.get_variable("v", shape=(), initializer=tf.zeros_initializer())
+w = v + 1  # w is a tf.Tensor which is computed based on the value of v.
+           # Any time a variable is used in an expression it gets automatically
+           # converted to a tf.Tensor representing its value.
+```
+
+#### updating tf Variables
+
+To assign a value to a variable, use the methods assign, assign_add, and friends in the tf.Variable class. For example, here is how you can call these methods:
+
+``` py
+v = tf.get_variable("v", shape=(), initializer=tf.zeros_initializer())
+assignment = v.assign_add(1)
+tf.global_variables_initializer().run()
+sess.run(assignment)  # or assignment.op.run(), or assignment.eval()
+```
+
+### Tensorflow Tensor Class
+
+Represents one of the outputs of an Operation.
+
+A Tensor is a symbolic handle to one of the outputs of an Operation. (can be run via session).
+
+A Tensor can be passed as an input to another Operation. This builds a dataflow connection between operations
+
 ### Tensorflow operations
+
+Represents a graph node that performs computation on tensors.
+
+An Operation is a node in a TensorFlow Graph that takes zero or more Tensor objects as input, and produces zero or more Tensor objects as output.
 
 Operations like `tf.add()`, `tf.substract`,
 `tf.multiply` etc. take in tensors and
@@ -95,3 +161,6 @@ with tf.Session() as sess:
     print(sess.run(z))
 
 ```
+
+`np.dot(a,b)` is same as `tf.matmul(a,b)` in tf
+`a.shape` is same as `a.get_shape()` in tf

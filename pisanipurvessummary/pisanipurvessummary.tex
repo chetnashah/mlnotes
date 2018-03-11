@@ -28,5 +28,61 @@
 		\item Roughly 68\% of entries on a list are within one SD of average, Roughly 95\% are within 2 SDs of avg. (This assumption only holds for data that can be approximated by a normal curve)
 		
 	\end{enumerate}
+
+	\section{Chapter 5. The Normal Approximation for Data}
+	
+	\begin{enumerate}
+		\item A value is converted to Standard Units (S.U) by seeing how many SDs it is above or below the average. The avg lies at 0 S.U and differences from avg are divided by SDs to give SU.
+		
+		\item When you convert X-Axis to S.U, you should convert Y-Axis to percent per S.U. which will scaled (Y Axis = original value x S.D)
+		
+		\item If a histogram does not follow a normal curve, then mean and S.D are poor summar statistics.
+		
+		\item \textbf{Percentiles} All histograms cann be summarized using percentiles.
+		
+		\item Percentiles can be calculated by cummulative addition of percentages of each classes. When we say $X_{th}$ percentile is k, we mean $X\%$ of population has value less than or equal to k.
+		
+		\item Interquartile range = 75th percentile - 25th percentile
+		
+		\item Adding same number k to every element in list, makes avg = k + oldAvg, but S.D does not change. (think of all points shifting to the right, mean is change, but spread is same)
+		
+		\item Multiplying same number k to every element in list, makes avg = k * oldAvg, S.D = k * oldSD (scaling argument)
+		
+	\end{enumerate}
+
+	\section{Chapter 6. Measurement Error}
+	
+	\begin{enumerate}
+		
+		\item No matter how carefully it was made, a measurement could have come out a bit differently. If the measurement is repeated, it will come out a bit different. By how much? The best way to
+		answer this question is to replicate the measurement.
+		
+		\item the S.D. of a series of repeated experiments estimates the likely size of chance error in a single measurement. (dont forget the single measurement part)
+		
+		\item Bias affects all the measurements the same way, pushing them in the same direction. Chance errors change from measurement to measurement, sometimes up and sometimes down.
+		
+		\item individual measurement = exact value + bias + chance error.
+		
+	\end{enumerate}
+
+	\section{Chapter 8. Correlation}
+	
+	\begin{enumerate}
+			\item Scatter plots are important.
+		
+		\item \textbf{Point of averages} The point whose x-cordinate is average of all x values, and y-coordinate is average of all y values.
+		
+		\item Correlations are always between -1 and 1, but can take any value in between. A positive correlation means clouds slope up; as one variable increases so does the other. A negative correlation means the clouds slope down, as one variable increases, the other decreases.
+		
+		\item \textbf{The SD Line} The SD Line is a line that passes through $(\mu_{x}, \mu_{y})$ and has slope $(\frac{SD_{y}}{SD_{x}})$
+		
+		\item \textbf{Computing correlation co-efficient}
+		Convert each variable to Standard units, The average of the products gives the correlation coefficient.
+		
+		\begin{align}
+			r = \frac{1}{n} \sum_{i} \bigg( \frac{x_i - \mu_{x}}{SD_x} \bigg) \bigg( \frac{y_i - \mu_{y}}{SD_y} \bigg)
+		\end{align}
+		
+	\end{enumerate}
 	
 \end{document}

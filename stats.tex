@@ -5,6 +5,7 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{amsthm}
+\usepackage{bm}
 \graphicspath{{images/}}
 
 \newcommand{\R}{\mathbb{R}}
@@ -246,20 +247,62 @@
 
 	\subsection{Standard Logistic}
 	
+		\begin{figure}[h]
+		\includegraphics[scale=0.65]{sigmoidplot}
+		\centering
+	\end{figure}
+	
 	The standard logistic function is the logistic function with parameters given $(k = 1, x_0 = 0, L = 1)$
 	i.e.\\
 	\begin{equation}
 		\sigma(x) = \frac{1}{1 + e^{-x}}
 	\end{equation}
 	which when plotted looks like\\
-	\begin{figure}[h]
-		\includegraphics[scale=0.65]{sigmoidplot}
-		\centering
-	\end{figure}
+
 
 	\textbf{Why is logistic function so important?}
 	Because it can take any real input $x, (x \in R)$, whereas the output always takes values between 0 and 1, and hence is interpretable as probability.
 	
-
+	
+	\subsection{Derivative of logistic}
+	
+	Let's denote the sigmoid function as $\sigma(x) = \dfrac{1}{1 + e^{-x}}$.
+	
+	The derivative of the sigmoid is $\dfrac{d}{dx}\sigma(x) = \sigma(x)(1 - \sigma(x))$.
+	
+	Here's a detailed derivation:
+	
+	
+	\begin{align}
+	\dfrac{d}{dx} \sigma(x) &= \dfrac{d}{dx} \left[ \dfrac{1}{1 + e^{-x}} \right] \\
+	&= \dfrac{d}{dx} \left( 1 + \mathrm{e}^{-x} \right)^{-1} \\
+	&= -(1 + e^{-x})^{-2}(-e^{-x}) \\
+	&= \dfrac{e^{-x}}{\left(1 + e^{-x}\right)^2} \\
+	&= \dfrac{1}{1 + e^{-x}\ } \cdot \dfrac{e^{-x}}{1 + e^{-x}}  \\
+	&= \dfrac{1}{1 + e^{-x}\ } \cdot \dfrac{(1 + e^{-x}) - 1}{1 + e^{-x}}  \\
+	&= \dfrac{1}{1 + e^{-x}\ } \cdot \left( \dfrac{1 + e^{-x}}{1 + e^{-x}} - \dfrac{1}{1 + e^{-x}} \right) \\
+	&= \dfrac{1}{1 + e^{-x}\ } \cdot \left( 1 - \dfrac{1}{1 + e^{-x}} \right) \\
+	&= \sigma(x) \cdot (1 - \sigma(x))
+	\end{align}
+	
+	\subsection{Cost function of logistic regression}
+	
+	Prediction function is sigmoid of weighted sum of input features:
+	\begin{align}
+		\bm{\hat{y}} = \sigma (\theta^T\cdot \bm{x})
+	\end{align}
+	
+	The log-loss function for a particular prediction is defined as $L(\hat{y},y)$ :
+	\begin{align}
+		L(\hat{y}, y) = y log\big(\hat{y}\big) + 
+		\big(1 - y\big)log\big(1 - \hat{y}\big)
+	\end{align}
+	
+	Cost function for all examples is average of log-loss for each example i of the m examples:
+	\begin{align}
+		J(\theta) = - \frac{1}{m} \sum_{i=1}^{m} \big[ y^{(i)} log\big(\hat{y}^{(i)}\big) + 
+		\big(1 - y^{(i)}\big)log\big(1 - \hat{y}^{(i)}\big)
+		\big]
+	\end{align}
 	
 \end{document}
