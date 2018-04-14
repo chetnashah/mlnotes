@@ -131,6 +131,30 @@ Accuracy = (TP + TN)/(FP + FN + TP + TN)
 F1 score = 2 * precision * recall / (precision + recall)
 ```
 
+### Overfitting
+
+Means making the model in such a way that it is trying to learn noise also, and does not generalize well.
+
+Bias - How far we are from actuall hypothesis (underfitting), estimated by training set error.
+
+Variance - How much of the data patterns have we captured/not captured, estimated by test set error. (overfitting)
+
+Regularization helps us control how much to fit in terms of overfitting.
+
+Major techniques used for regularization are L1 norm and L2 norm.
+
+Understanding Bias-variance tradeoff(http://scott.fortmann-roe.com/docs/BiasVariance.html)
+
+### Batch Gradient Descent vs Stochastic Gradient Descent
+
+https://www.youtube.com/watch?v=W9iWNJNFzQI
+
+Batch Gradient descent: Use all m examples in each iteration of modifying w.
+
+Stochastic Gradient descent: use 1 example in each iteration.
+
+Mini batch gradient descent: use b(mini-batch size) examples in each iteration.
+
 ### Clustering
 
 #### Types of clustering
@@ -165,6 +189,13 @@ F1 score = 2 * precision * recall / (precision + recall)
 * Intrinsic - Is it good in and of itself. clusters correspond to classes.
 
 * see silhoutte co-efficients in sklearn
+
+#### Moving Averages and exponential weighted moving averages
+https://en.wikipedia.org/wiki/Moving_average
+
+It is a key component of optimization algorithms used to train neural networks.
+
+Also try to plot these moving averages for a given scatter plot.
 
 #### Bayesian procedure
 
@@ -216,3 +247,10 @@ And their derivative/slope is almost flat, thus not helping back-propogation/gra
 multilabel classification - softmax, value prediction - linear unit?
 
 ### derivative of activation functions are important!
+
+### Basic recipe for machine learning (neural networks)
+
+1. check bias (i.e training set performance error %) - If bias is high, 
+try a bigger network, or try tot train longer.
+
+2. check variance (how far from training set perf error is from dev set perf error): Try getting more data, or try regularization.
