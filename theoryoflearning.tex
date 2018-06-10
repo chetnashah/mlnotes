@@ -1,0 +1,46 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+% code formatting settings
+\usepackage{listings}
+\usepackage{color}
+\begin{document}
+\title{Theory of learning}
+\maketitle
+
+
+
+\section{Learning Feasibility}
+
+	Generalization: It follows from hoeffdings inequality (related to law of large numbers), Out of sample error is equivalent to In-sample error usually means generalization is good.  
+	
+	\begin{equation}
+		E_{in} \approx E_{out}
+	\end{equation}
+
+	
+	Fitting sample data: Getting sample error down is an example of fitting data well and corresponds to 
+		\begin{equation}
+			E_{in} \approx 0
+		\end{equation}
+
+	\textbf{What we want} Ideally we want our learning system to perform best on out-of-sample data i.e real-world or test data,
+	which is signified by:
+	\begin{equation}
+		E_{out} \approx 0
+	\end{equation}
+
+	\subsection{Input distribution and Target distribution}
+	 \textbf{Input Distribution} THis is the distribution that generates the input examples i.e. $x_1, x_2, \cdots x_N $. This is present, but this is not what we are trying to learn. \\
+	
+	\textbf{Target Distribution} This can be considered as target function combined with noice also given as $P(y|x)$. This is what we are aiming to learn.\\
+	
+	Together using the product rule, input distribution and Target distribution get together to produce joint distribution, i.e. the example pairs that we have i.e $(x_1, y_1), (x_2, y_2) \cdots (x_N, y_N) $.
+	
+	
+
+\end{document}

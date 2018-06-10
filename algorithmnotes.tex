@@ -89,13 +89,75 @@
 	Sink op: keep swapping values with children until settled.\\
 	Swim op: keep swapping values with parent until settled.\\
 	
-	\textbf{Insertion}: Insertion usually happens at last index N, followed by a swim op.\\
+	\textbf{Public Operations - creation}:
+	\begin{itemize}
+		\item \textbf{heapify}: Create heap out of array elements
+		\item \textbf{union/merge}: mix existing heaps to create a new valid heap
+	\end{itemize}
+	\textbf{Public Operations - manipulation \& inspection}:
+	\begin{itemize}
+		\item \textbf{extract-max/pop} - remove and return max value from the heap.
+		\item \textbf{find-max/peek} - just get the max value on the heap without modifying it.
+		\item \textbf{insert/push} - add a new item to the heap.
+		\item \textbf{size} - returns number of items in the heap.
+	\end{itemize} 
+	\textbf{Internal Operations}:
+	\begin{itemize}
+		\item \textbf{decrease-key/increase-key} change value of a particular node in heap
+		\item \textbf{trickle-up/sift-up/swim} bring a node upwards, until heap property is satisfied
+		\item \textbf{trickle-down/sift-down/sink} bring a node downwards until heap property is satisfied.
+	\end{itemize}
 	
 	\section{Binary Tree}
 	
 	For a given Binary Search Tree, only pre-order traversal(first root, then leftchild recursively, then right child recursively), can preserve the structure of the tree. Hence it is used in serialization, and preserve tree information.
 	
 	The proof of above case is interesting, since it derives from the general fact that you would serialize/store a structure of graph using an adjacency list, which is assentially the node followed by list of stuff it points to.
+	
+	\subsection{Binary Search Trees}
+	
+	\textbf{Binary Search Tree} have a special invariant, i.e all the items on the left subtree are smaller than current item, and all the items on the right subtree are larger than the current item. In a sense, we assume there is a total order possible for all the elements added to the BST. Also by induction, the left and right subtrees are also binary search trees.
+	Following regular operations without modifying tree height or any facility for balancing tree to improve its performance
+	\begin{itemize}
+		\item \textbf{insert}: find the place to insert by using comparisions and add it.
+		\item \textbf{search/find}: take left and right guided by comparisions from the root till you reach the desired node.
+		\item \textbf{delete}: 3 cases.
+		  \begin{enumerate}
+			\item \textbf{Leaf Node}: Just remove node
+			\item \textbf{One child}: remove node and make parent point directly to grand child.
+			\item \textbf{Two children}: remove node and replace by successor or predecessor
+		\end{enumerate}
+		
+	\end{itemize}
+
+	\subsubsection{Balanced Binary Search Trees}
+	
+	There are usually some techniques involved in manipulation
+	of binary search trees, to maintain balancing invariant (e.g height balancing or weight balancing), in order to prevent greater skewing of tree shape and directly or indirectly affecting complexity of opearations in Binary search trees.
+	
+	\subsubsection[AVL Tree]{AVL Tree - Height Balanced Binary search Tree}
+	
+	Height is an important property held by every node in such a tree. 
+	The definition of height of a node is inductive:
+	\begin{itemize}
+		\item Height of a null node is 0 $H_{null} = 0$
+		\item Height of a node is $H = max(H_l, H_r) + 1$
+	\end{itemize}
+	Also the height of a node is only affected by the height of children subtrees, and has no bearing on parent nodes.\\
+	
+	\textbf{Balance Factor of a node} : The balance factor is defined as the height difference between the child nodes. $B = |H_r - H_l|$\\
+	
+	\textbf{Core Invariant} BalanceFactor is at most 1 : $|H_l - H_r| \le 1$\\
+	
+	How different operations affect balance factor of nodes?
+	
+	\begin{itemize}
+		\item \textbf{search/find} The search process is same as that of a regular binary search tree, and since it does not modify the tree, there is no effect of search operation on balance factor of nodes.
+		
+		\item \textbf{insert} The insert process is done by first doing the search process, followed by inserting at the desired position. Insertion of node may result in an balance factor change. So to maintain the invariant of balance factor, rotations are performed on unbalanced node to rebalance the tree. On insertion, only the heights of nodes on the search path are affected.
+		
+		\item \textbf{delete} Similar role as insert.
+	\end{itemize}
 	
 	\section{Graph}
 	
@@ -111,8 +173,23 @@
 	
 	\subsection{Minimum Spanning Trees}
 	
+	Cayley's formula: The number of labeled trees of n vertices is $n^{n-2}$
+	
 	Simple MST algorithms like kruskal and prim's algorithm assume that you are working on a undirected weighted graph. 
 	
 	Main Invariant: Given any cut, the minimum weight crossing edge is always in MST.
+
+	\section{Strings}
+	A string is a sequence of charachters.
+	
+	\subsection{SubStrings}
+	A substring is a list of consecutive charachters in a given string that has a start and an end index, e.g. $A[i..j]$. For a given string of length N, the full string $A[1..N]$ is also a substring of A.
+
+	\textbf{No of Substrings} All possible combinations of start indexes with end indexes would be $n + (n - 1) + (n - 2) + \cdots + 1$ i.e. $\frac{n (n - 1)}{2}$.	
+	
+	\subsection{SubSequence}
+	A subsequence is a list of charachters picked from the original string preserving the relative order, but not necessarily consecutive charachters.
+	one can list subsequence of original string using a list of indexes. e.g.
+	$A[1,2,4,6,7] ("abcdefghi") = "abdfg"$ is a valid subsequence.
 
 \end{document}
